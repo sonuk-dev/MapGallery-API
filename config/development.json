@@ -1,0 +1,4 @@
+{
+    "port": "8080",
+    "mongoUrl": "mongodb+srv://MapGallery:@BeHmy8Mp@m3K@n@cluster0.gbxxq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+}

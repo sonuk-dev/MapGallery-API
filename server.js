@@ -1,15 +1,14 @@
 const Koa = require("koa");
 const app = new Koa();
 const config = require('./config/development.json');
-const authRouter = require('./api/routers/auth-router')
+const authRouter = require('./api/routers/auth-router');
+const imageRouter = require('./api/routers/image-router')
 const mongoConnect = require('./libs/mongo-connection');
 const koaBody = require('koa-body');
 const jwt = require('./libs/jwt')
 const cors = require('@koa/cors');
-
 mongoConnect(config);
 
-app
 app
     .use(cors())
     .use(async (ctx, next) => {
@@ -23,9 +22,12 @@ app
     })
     .use(koaBody())
 
-    .use(jwt.unless({ path: [/^\/auth/] }))
+
+    // .use(jwt.unless({ path: [/^\/auth/] }))
 
     .use(authRouter.middleware())
+    .use(imageRouter.routes())
+    .use(imageRouter.allowedMethods())
 
 app.on('error', (err, ctx) => {
     console.error('server error', err.message);

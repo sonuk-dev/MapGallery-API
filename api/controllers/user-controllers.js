@@ -1,4 +1,5 @@
 const UserModel = require('../models/user-model');
+const ImageController = require('./image-controllers');
 const jwt = require('jsonwebtoken');
 
 let userController = {};
@@ -11,6 +12,8 @@ userController.addUser = (async (ctx) => {
     );
 
     if (result.err) throw ctx.throw(result.status, result.err)
+    let img = await ImageController.createImageObj(result.id);
+    console.log(img)
     const token = jwt.sign({ user: result }, 'A very secret key');
     ctx.status = 200;
     ctx.body = {

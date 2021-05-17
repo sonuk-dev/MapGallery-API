@@ -4,7 +4,7 @@ const multer = require('@koa/multer');
 // const imageRouter = new JoiRouter();
 const imageRouter = new Router();
 const imageController = require('../controllers/image-controllers');
-const validator = require('../../libs/validation');
+
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {

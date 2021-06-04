@@ -27,7 +27,8 @@ Image.createImageObj = (userId) => {
 }
 
 Image.findImagesByUserId = (userId) => {
-    return Image.findOne({ userId });
+    console.log(userId)
+    return Image.findOne({ userId }).lean();
 }
 
 Image.addImage = (userId, image, gps) => {
@@ -36,12 +37,11 @@ Image.addImage = (userId, image, gps) => {
         contentType: image.mimetype,
         gps: JSON.parse(gps)
     }
-    console.log( img)
     return Image.findOneAndUpdate(
         { userId },
         { $push: { images: img } },
         { new: true }
-    );
+    ).lean();
 }
 
 module.exports = Image;

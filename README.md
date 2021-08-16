@@ -7,8 +7,8 @@ A NodeJS api with koa.js for user authentication and for saving information abou
 ### Clone the repo
 
 ```shell
-git clone https://github.com/SonaGharibyan/Server
-cd Server
+git clone https://github.com/sonuk-dev/MapGallery-API
+cd MapGallery-API
 ```
 
 ### Installing packages
